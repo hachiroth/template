@@ -1,0 +1,17 @@
+node_modules/
+dist/
+build/
+out/
+output/
+bin/
+cache/
+log/
+logs/
+test/
+
+*.log
+*.tmp
+*.test
+/.env
+*.env.*
+*.test.*
