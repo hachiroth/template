@@ -1,13 +1,14 @@
-import path from "node:path";
-import url from "node:url";
-import { defineConfig } from "vitest/config";
+import { fileURLToPath } from "node:url";
+import { configDefaults, defineConfig, mergeConfig } from "vitest/config";
+import viteConfig from "./vite.config";
 
-const __dirname = url.fileURLToPath(path.dirname(import.meta.url));
-
-export default defineConfig({
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src")
+export default mergeConfig(
+  viteConfig,
+  defineConfig({
+    test: {
+      environment: "jsdom",
+      exclude: [...configDefaults.exclude, "e2e/**"],
+      root: fileURLToPath(new URL("./", import.meta.url))
     }
-  }
-});
+  })
+);

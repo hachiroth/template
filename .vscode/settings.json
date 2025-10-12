@@ -8,6 +8,12 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "always",
     "source.organizeImports": "always"
