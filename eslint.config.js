@@ -1,4 +1,6 @@
 import eslintJs from "@eslint/js";
+import eslintConfigPrettier from "eslint-config-prettier";
+import eslintPluginPrettier from "eslint-plugin-prettier";
 import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import eslintTs from "typescript-eslint";
@@ -18,7 +20,14 @@ export default defineConfig(
   [
     {
       files: ["**/**.{js,ts}"],
-      extends: [eslintJs.configs.recommended, ...eslintTs.configs.recommended],
+      extends: [
+        eslintJs.configs.recommended,
+        ...eslintTs.configs.recommended,
+        eslintConfigPrettier
+      ],
+      plugins: {
+        prettier: eslintPluginPrettier
+      },
       languageOptions: {
         parser: eslintTs.parser,
         globals: globals.browser,
@@ -35,7 +44,8 @@ export default defineConfig(
             ignoreRestSiblings: true
           }
         ],
-        "eol-last": ["warn", "always"]
+        "eol-last": ["warn", "always"],
+        "@typescript-eslint/no-explicit-any": "off"
       }
     }
   ]
